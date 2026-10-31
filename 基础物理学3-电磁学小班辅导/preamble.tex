@@ -1,0 +1,59 @@
+\usepackage{amsmath,amssymb,bm,mathtools,esint}
+\usepackage{graphicx,booktabs,array,tabularx,multicol}
+\usepackage{siunitx}
+\setCJKmainfont[AutoFakeBold=2]{SimHei}
+\setCJKsansfont[AutoFakeBold=2]{SimHei}
+\setCJKmonofont[AutoFakeBold=2]{SimHei}
+\setsansfont{TeX Gyre Heros}
+\usefonttheme{professionalfonts}
+\geometry{paperwidth=254mm,paperheight=143mm}
+\definecolor{courseblue}{HTML}{2B4D89}
+\definecolor{courselight}{HTML}{DFEBF5}
+\definecolor{coursepale}{HTML}{7D9ED1}
+\definecolor{coursered}{HTML}{B22222}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=courseblue}
+\setbeamercolor{frametitle}{fg=black,bg=white}
+\setbeamercolor{block title}{fg=white,bg=courseblue}
+\setbeamercolor{block body}{fg=black,bg=courselight}
+\setbeamercolor{alerted text}{fg=coursered}
+\setbeamercolor{footline}{fg=white,bg=coursepale}
+\newcommand{\coursepart}{课程安排}
+\setbeamerfont{normal text}{size=\fontsize{17.5}{22}\selectfont}
+\setbeamerfont{frametitle}{size=\fontsize{24}{29}\selectfont,series=\bfseries}
+\DeclareMathSizes{24}{24.88}{17.28}{12}
+\setbeamerfont{block title}{size=\fontsize{17.5}{21}\selectfont,series=\bfseries}
+\setbeamerfont{block body}{size=\fontsize{17.5}{22}\selectfont}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{itemize item}{\color{courseblue}\raisebox{.15ex}{\rule{.36ex}{.36ex}}}
+\setbeamertemplate{itemize subitem}{\color{courseblue}\rule{.30ex}{.30ex}}
+\setbeamertemplate{frametitle}{%
+  \vspace{0.12cm}\centering\insertframetitle\par\vspace{0.16cm}%
+  \makebox[\textwidth][c]{\color{courseblue}\rule{\dimexpr\paperwidth-0.7cm\relax}{2.5pt}}\par\vspace{-0.12cm}}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+   \begin{beamercolorbox}[wd=.80\paperwidth,ht=15pt,dp=4pt,leftskip=12pt]{block title}%
+    \fontsize{12}{14}\selectfont\coursepart
+   \end{beamercolorbox}%
+   \begin{beamercolorbox}[wd=.20\paperwidth,ht=15pt,dp=4pt,rightskip=12pt plus1fil]{footline}%
+    \hfill\fontsize{12}{14}\selectfont\insertframenumber\,/\,\inserttotalframenumber
+   \end{beamercolorbox}}}
+\setbeamersize{text margin left=0.65cm,text margin right=0.65cm}
+\setlength{\parskip}{5pt}
+\setlength{\abovedisplayskip}{8pt}
+\setlength{\belowdisplayskip}{8pt}
+\AtBeginDocument{\fontsize{17.5}{22}\selectfont}
+\AtBeginEnvironment{frame}{\fontsize{17.5}{22}\selectfont}
+\setlength{\emergencystretch}{1.5em}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\epso}{\varepsilon_0}
+\newcommand{\muo}{\mu_0}
+\newcommand{\vct}[1]{\bm{#1}}
+\renewcommand{\unit}[1]{\,\mathrm{#1}}
+\newcommand{\e}{\mathrm e}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\src}[1]{\note{来源：#1}}
+\newcommand{\teach}[1]{\note{讲授：#1}}
+\graphicspath{{figures/}}
+\hypersetup{pdftitle={基础物理学III：电磁学小班辅导},pdfauthor={小班辅导讲义},colorlinks=true,linkcolor=courseblue,urlcolor=courseblue}

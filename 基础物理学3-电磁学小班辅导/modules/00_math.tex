@@ -1,0 +1,165 @@
+\section{数学基础}
+\gdef\coursepart{数学基础}
+
+\begin{frame}{数学基础}
+矢量分析把场在空间中的变化写成梯度、散度和旋度。后面求电场和磁场，都要先判断用哪一个算符，再在合适的坐标里写出来。
+基本关系：高斯公式（散度对应闭合面的通量），斯托克斯公式（旋度对应闭合曲线的环流）。
+
+几类计算的一般方法：
+（1）直角坐标系中直接写梯度、散度、旋度\\
+（2）正交曲线坐标：先算拉梅系数，再代入一般公式\\
+（3）柱坐标、球坐标用三个算符的分量式\\
+（4）拉普拉斯算符由 $\nabla\cdot(\nabla U)$ 得到，矢量形式用恒等式
+\src{电磁学讲义\_20251125（张志财）.pdf，第1章。}
+\end{frame}
+
+\begin{frame}{梯度、散度与旋度}
+直角坐标系中，标量场 $U$，矢量场 $\vct F=F_x\hat{\vct x}+F_y\hat{\vct y}+F_z\hat{\vct z}$。
+\[
+\nabla U=\frac{\partial U}{\partial x}\hat{\vct x}+\frac{\partial U}{\partial y}\hat{\vct y}+\frac{\partial U}{\partial z}\hat{\vct z},
+\qquad
+\dd U=\nabla U\cdot\dd\vct r.
+\]
+\[
+\nabla\cdot\vct F=\frac{\partial F_x}{\partial x}+\frac{\partial F_y}{\partial y}+\frac{\partial F_z}{\partial z}
+=\lim_{\Delta V\to0}\frac{1}{\Delta V}\oiint_S\vct F\cdot\dd\vct S.
+\]
+\[
+\nabla\times\vct F=
+\begin{vmatrix}
+\hat{\vct x}&\hat{\vct y}&\hat{\vct z}\\[4pt]
+\dfrac{\partial}{\partial x}&\dfrac{\partial}{\partial y}&\dfrac{\partial}{\partial z}\\[10pt]
+F_x&F_y&F_z
+\end{vmatrix},
+\qquad
+\hat{\vct n}\cdot(\nabla\times\vct F)
+=\lim_{\Delta S\to0}\frac{1}{\Delta S}\oint_C\vct F\cdot\dd\vct l.
+\]
+\src{电磁学讲义\_20251125（张志财）.pdf，PDF第24--31页，第1.3节，式(1.49)(1.57)(1.58)(1.72)(1.73)。}
+\end{frame}
+
+\begin{frame}{高斯公式与斯托克斯公式}
+\[
+\boxed{\oiint_S\vct F\cdot\dd\vct S=\iiint_V(\nabla\cdot\vct F)\,\dd V}
+\]
+\[
+\boxed{\oint_C\vct F\cdot\dd\vct l=\iint_S(\nabla\times\vct F)\cdot\dd\vct S}
+\]
+闭合曲面的 $\dd\vct S$ 取外法向。开曲面的法向与边界 $C$ 的走向成右手关系。
+\[
+\nabla\cdot(\nabla\times\vct F)=0,\qquad\nabla\times(\nabla U)=0.
+\]
+\src{电磁学讲义\_20251125（张志财）.pdf，PDF第28--32页，定理1.2、定理1.3，式(1.63)(1.75)；习题1.1。}
+\end{frame}
+
+\begin{frame}{正交曲线坐标与拉梅系数}
+正交曲线坐标 $(u_1,u_2,u_3)$，$\hat{\vct e}_i$ 指向 $u_i$ 增大的方向。
+\[
+h_i=\left|\frac{\partial\vct r}{\partial u_i}\right|,\qquad
+\dd\vct l=\sum_{i=1}^{3}h_i\,\dd u_i\,\hat{\vct e}_i,\qquad
+\dd V=h_1 h_2 h_3\,\dd u_1\dd u_2\dd u_3.
+\]
+\[
+\dd\vct S_1=h_2 h_3\,\dd u_2\dd u_3\,\hat{\vct e}_1
+\quad(1\to2\to3\to1).
+\]
+\[
+\begin{aligned}
+(x,y,z):&\quad h_x=h_y=h_z=1, && \dd V=\dd x\,\dd y\,\dd z,\\
+(r,\phi,z):&\quad h_r=1,\; h_\phi=r,\; h_z=1, && \dd V=r\,\dd r\,\dd\phi\,\dd z,\\
+(r,\theta,\phi):&\quad h_r=1,\; h_\theta=r,\; h_\phi=r\sin\theta, && \dd V=r^2\sin\theta\,\dd r\,\dd\theta\,\dd\phi.
+\end{aligned}
+\]
+柱坐标 $\vct r=(r\cos\phi,\,r\sin\phi,\,z)$；球坐标 $\vct r=(r\sin\theta\cos\phi,\,r\sin\theta\sin\phi,\,r\cos\theta)$。
+\src{电磁学讲义\_20251125（张志财）.pdf，PDF第22--23页，第1.2节，式(1.44)--(1.47)。拉梅系数即该处的 $|\partial\vct r/\partial u_i|$。}
+\end{frame}
+
+\begin{frame}{带拉梅系数的梯度、散度、旋度}
+\[
+\nabla U=\sum_{i=1}^{3}\frac{1}{h_i}\frac{\partial U}{\partial u_i}\,\hat{\vct e}_i.
+\]
+\[
+\nabla\cdot\vct F=\frac{1}{h_1 h_2 h_3}\sum_{i=1}^{3}
+\frac{\partial}{\partial u_i}\!\left(\frac{h_1 h_2 h_3}{h_i}F_i\right).
+\]
+\[
+\nabla\times\vct F=\frac{1}{h_1 h_2 h_3}
+\begin{vmatrix}
+h_1\hat{\vct e}_1&h_2\hat{\vct e}_2&h_3\hat{\vct e}_3\\[4pt]
+\dfrac{\partial}{\partial u_1}&\dfrac{\partial}{\partial u_2}&\dfrac{\partial}{\partial u_3}\\[10pt]
+h_1 F_1&h_2 F_2&h_3 F_3
+\end{vmatrix}.
+\]
+$h_i=1$ 时回到直角坐标系。
+\src{与张讲义第1.2节的拉梅系数及习题1.6、1.9的柱、球公式一致。}
+\end{frame}
+
+\begin{frame}{柱坐标中的三个算符}
+$h_r=1$，$h_\phi=r$，$h_z=1$。$\vct F=F_r\hat{\vct r}+F_\phi\hat{\vct\phi}+F_z\hat{\vct z}$。
+\[
+\nabla U=\frac{\partial U}{\partial r}\hat{\vct r}+\frac{1}{r}\frac{\partial U}{\partial\phi}\hat{\vct\phi}+\frac{\partial U}{\partial z}\hat{\vct z}.
+\]
+\[
+\nabla\cdot\vct F=\frac{1}{r}\frac{\partial(r F_r)}{\partial r}+\frac{1}{r}\frac{\partial F_\phi}{\partial\phi}+\frac{\partial F_z}{\partial z}.
+\]
+\[
+\nabla\times\vct F=\frac{1}{r}
+\begin{vmatrix}
+\hat{\vct r}&r\hat{\vct\phi}&\hat{\vct z}\\[4pt]
+\dfrac{\partial}{\partial r}&\dfrac{\partial}{\partial\phi}&\dfrac{\partial}{\partial z}\\[10pt]
+F_r&r F_\phi&F_z
+\end{vmatrix}.
+\]
+\src{电磁学讲义\_20251125（张志财）.pdf，PDF第32页，习题1.4--1.6。}
+\end{frame}
+
+\begin{frame}{球坐标中的三个算符}
+$h_r=1$，$h_\theta=r$，$h_\phi=r\sin\theta$。$\vct F=F_r\hat{\vct r}+F_\theta\hat{\vct\theta}+F_\phi\hat{\vct\phi}$。
+\[
+\nabla U=\frac{\partial U}{\partial r}\hat{\vct r}+\frac{1}{r}\frac{\partial U}{\partial\theta}\hat{\vct\theta}+\frac{1}{r\sin\theta}\frac{\partial U}{\partial\phi}\hat{\vct\phi}.
+\]
+\[
+\nabla\cdot\vct F=\frac{1}{r^2}\frac{\partial(r^2 F_r)}{\partial r}+\frac{1}{r\sin\theta}\frac{\partial(F_\theta\sin\theta)}{\partial\theta}+\frac{1}{r\sin\theta}\frac{\partial F_\phi}{\partial\phi}.
+\]
+\[
+\nabla\times\vct F=\frac{1}{r^2\sin\theta}
+\begin{vmatrix}
+\hat{\vct r}&r\hat{\vct\theta}&r\sin\theta\,\hat{\vct\phi}\\[4pt]
+\dfrac{\partial}{\partial r}&\dfrac{\partial}{\partial\theta}&\dfrac{\partial}{\partial\phi}\\[10pt]
+F_r&r F_\theta&r\sin\theta\,F_\phi
+\end{vmatrix}.
+\]
+\src{电磁学讲义\_20251125（张志财）.pdf，PDF第32--33页，习题1.7--1.9。}
+\end{frame}
+
+\begin{frame}{拉普拉斯算符}
+\[
+\nabla^2 U=\nabla\cdot(\nabla U)
+=\frac{\partial^2 U}{\partial x^2}+\frac{\partial^2 U}{\partial y^2}+\frac{\partial^2 U}{\partial z^2}.
+\]
+\[
+\nabla^2 U=\frac{1}{h_1 h_2 h_3}\sum_{i=1}^{3}
+\frac{\partial}{\partial u_i}\!\left(\frac{h_1 h_2 h_3}{h_i^2}\frac{\partial U}{\partial u_i}\right).
+\]
+\[
+\begin{aligned}
+\text{柱：}\quad
+\nabla^2 U
+&=\frac1r\frac{\partial}{\partial r}\!\left(r\frac{\partial U}{\partial r}\right)
++\frac{1}{r^2}\frac{\partial^2 U}{\partial\phi^2}
++\frac{\partial^2 U}{\partial z^2},\\[4pt]
+\text{球：}\quad
+\nabla^2 U
+&=\frac{1}{r^2}\frac{\partial}{\partial r}\!\left(r^2\frac{\partial U}{\partial r}\right)
++\frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}\!\left(\sin\theta\frac{\partial U}{\partial\theta}\right)
++\frac{1}{r^2\sin^2\theta}\frac{\partial^2 U}{\partial\phi^2}.
+\end{aligned}
+\]
+直角坐标系中 $(\nabla^2\vct F)_i=\nabla^2 F_i$。
+
+重要的恒等式:   
+\[
+\nabla^2\vct F=\nabla(\nabla\cdot\vct F)-\nabla\times(\nabla\times\vct F).
+\]
+\src{电磁学讲义\_20251125（张志财）.pdf，PDF第63页，式(2.121)(2.122)；矢量恒等式见习题1.1。柱、球坐标由 $\nabla\cdot(\nabla U)$ 代入拉梅系数。}
+\end{frame}
